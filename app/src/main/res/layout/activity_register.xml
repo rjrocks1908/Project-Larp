@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
+    tools:context=".Activities.RegisterActivity"
     android:background="@drawable/login3">
 
     <RelativeLayout
@@ -107,7 +107,7 @@
                 android:layout_marginBottom="5dp" />
 
             <EditText
-                android:id="@+id/login_userNameEntry"
+                android:id="@+id/login_passEntry"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/edittext"

@@ -1,14 +1,16 @@
-package com.haxon.larp;
+package com.haxon.larp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DashboardActivity extends AppCompatActivity {
+import com.haxon.larp.R;
+
+public class IntroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_intro);
     }
 }
