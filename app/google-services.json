@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814537133147",
+    "project_id": "project-larp",
+    "storage_bucket": "project-larp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814537133147:android:7b423a7f590bc56274c37e",
+        "android_client_info": {
+          "package_name": "com.haxon.larp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814537133147-97b9b609ttotdtj7ea8pc510d9g9jtaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKFW9-RNYb_sK7lbgbDjbxmssvTTaZ4x4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814537133147-97b9b609ttotdtj7ea8pc510d9g9jtaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

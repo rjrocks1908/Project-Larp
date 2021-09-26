@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartHomeActivity"
+    android:background="@drawable/login3">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LARP"
+        android:textSize="80dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/bree_serif"
+        android:paddingLeft="20dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Personalized Carbon \n Reduction Trainer"
+        android:textColor="@color/white"
+        android:layout_below="@id/heading"
+        android:fontFamily="@font/biryani_extralight"
+        android:paddingLeft="20dp"
+        android:textSize="18dp"/>
+
+
+
+    <Button
+        android:id="@+id/startHome_signUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/btnlogin"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        android:text="SignUp"/>
+
+    <Button
+        android:id="@+id/startHome_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/startHome_signUp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btnlogin"
+        android:text="Login"
+        android:textAllCaps="false" />
+
+
+
+</RelativeLayout>
