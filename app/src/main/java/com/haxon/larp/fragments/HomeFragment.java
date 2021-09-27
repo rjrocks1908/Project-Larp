@@ -20,8 +20,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.haxon.larp.Activities.CreateNewTaskActivity;
+import com.haxon.larp.CONSTANTS;
 import com.haxon.larp.Models.MyGoalsModel;
 import com.haxon.larp.R;
+
+import java.util.Random;
 
 public class HomeFragment extends Fragment {
 
@@ -29,6 +32,8 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
+    TextView tip;
+    Random myRandom;
 
     @Nullable
     @Override
@@ -38,6 +43,10 @@ public class HomeFragment extends Fragment {
 
         addTask = view.findViewById(R.id.home_addTask);
         recyclerView = view.findViewById(R.id.home_recyclerView);
+        tip = view.findViewById(R.id.home_tip);
+
+        myRandom = new Random();
+        tip.setText(CONSTANTS.tips[myRandom.nextInt(CONSTANTS.tips.length - 1)]);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         linearLayoutManager.setReverseLayout(true);

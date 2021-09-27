@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.haxon.larp.Designing.CustomProgressBar;
 import com.haxon.larp.Models.CredentialsData;
 import com.haxon.larp.R;
 
@@ -58,24 +59,41 @@ public class RegisterActivity extends AppCompatActivity {
         editor.putString("username", userName);
         editor.apply();
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = firebaseDatabase.getReference("User");
+        CustomProgressBar dialog = new CustomProgressBar(RegisterActivity.this);
+        dialog.getWindow().setBackgroundDrawableResource(
+                android.R.color.transparent
+        );
 
-        CredentialsData data = new CredentialsData(userName, email, phoneNumber, password);
+        if (userName.isEmpty()) {
+            userNameEntry.setError("Enter UserName");
+        } else if (email.isEmpty()) {
+            emailEntry.setError("Enter Email");
+        } else if (phoneNumber.isEmpty()) {
+            phoneEntry.setError("Enter phone Number");
+        } else if (password.isEmpty()) {
+            passEntry.setError("Enter password");
+        } else {
+            dialog.show();
 
-        reference.child(userName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isComplete()){
-                    Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegisterActivity.this, DashboardActivity.class));
-                    finish();
-                }else{
-                    Toast.makeText(RegisterActivity.this, "Registration Not Successful", Toast.LENGTH_SHORT).show();
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            reference = firebaseDatabase.getReference("User");
+
+            CredentialsData data = new CredentialsData(userName, email, phoneNumber, password);
+
+            reference.child(userName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isComplete()) {
+                        dialog.dismiss();
+                        Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RegisterActivity.this, InfoTakeActivity.class));
+                        finish();
+                    } else {
+                        dialog.dismiss();
+                        Toast.makeText(RegisterActivity.this, "Registration Not Successful", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
-
-
+            });
+        }
     }
 }

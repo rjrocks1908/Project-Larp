@@ -3,8 +3,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
+        jcenter()
     }
     dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.10, 0.99.99]'
         classpath "com.android.tools.build:gradle:7.0.2"
         classpath 'com.google.gms:google-services:4.3.10'
 
@@ -12,6 +15,8 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir
