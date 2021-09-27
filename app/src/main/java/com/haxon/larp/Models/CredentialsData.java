@@ -1,4 +1,4 @@
-package com.haxon.larp;
+package com.haxon.larp.Models;
 
 public class CredentialsData {
 

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,11 +56,18 @@ public class LoginActivity extends AppCompatActivity {
         String userName = userNameEntry.getText().toString();
         String password = passEntry.getText().toString();
 
+
+
         if (!userName.isEmpty()){
             userNameEntry.setError(null);
 
             if (!password.isEmpty()){
                 userNameEntry.setError(null);
+
+                SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("mypref", 0);
+                SharedPreferences.Editor editor = sharedPreferences1.edit();
+                editor.putString("username", userName);
+                editor.apply();
 
                 dialog.show();
                 firebaseDatabase = FirebaseDatabase.getInstance();

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.haxon.larp.CredentialsData;
+import com.haxon.larp.Models.CredentialsData;
 import com.haxon.larp.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -51,6 +52,11 @@ public class RegisterActivity extends AppCompatActivity {
         String email = emailEntry.getText().toString();
         String phoneNumber = phoneEntry.getText().toString();
         String password = passEntry.getText().toString();
+
+        SharedPreferences sharedPreferences1 = getApplicationContext().getSharedPreferences("mypref", 0);
+        SharedPreferences.Editor editor = sharedPreferences1.edit();
+        editor.putString("username", userName);
+        editor.apply();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         reference = firebaseDatabase.getReference("User");

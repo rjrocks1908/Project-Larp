@@ -7,7 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -56,8 +59,14 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.character_menu:
                         Toast.makeText(DashboardActivity.this, "Avatar", Toast.LENGTH_SHORT).show();
                         break;
-                }
+                    case R.id.logout_menu:
+                        SharedPreferences preferences = getSharedPreferences("mypref", 0);
+                        preferences.edit().remove("username").apply();
+                        startActivity(new Intent(DashboardActivity.this, StartHomeActivity.class));
+                        finish();
+                        break;
 
+                }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
