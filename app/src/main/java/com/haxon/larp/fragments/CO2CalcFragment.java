@@ -32,7 +32,7 @@ public class CO2CalcFragment extends Fragment {
     private Button addAppliances;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference reference;
-    HashMap<String, int> appliancesData = new HashMap<>();
+    HashMap<String, Integer> appliancesData = new HashMap<String, Integer>();
     String appl;
 
     @Nullable
@@ -52,7 +52,7 @@ public class CO2CalcFragment extends Fragment {
         );
         chooseApplianceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         appliances.setAdapter(chooseApplianceAdapter);
-        appl = appliances.getSelectedItem().toString()
+        appl = appliances.getSelectedItem().toString();
 
 
 

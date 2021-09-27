@@ -20,6 +20,7 @@ import com.haxon.larp.R;
 import com.haxon.larp.fragments.CO2CalcFragment;
 import com.haxon.larp.fragments.HomeFragment;
 import com.haxon.larp.fragments.RulesFragment;
+import com.haxon.larp.fragments.ScreenOnFragment;
 import com.haxon.larp.fragments.TaskFragment;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -66,6 +67,9 @@ public class DashboardActivity extends AppCompatActivity {
                                 new CO2CalcFragment()).commit();
                         navigationView.setCheckedItem(R.id.calc_menu);
                         break;
+                    case R.id.menu_screenOn:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new ScreenOnFragment()).commit();
                     case R.id.logout_menu:
                         SharedPreferences preferences = getSharedPreferences("mypref", 0);
                         preferences.edit().remove("username").apply();

@@ -17,6 +17,11 @@
             android:icon="@drawable/task_vector"
             android:title="Tasks Available"/>
 
+        <item
+            android:id="@+id/menu_screenOn"
+            android:icon="@drawable/screen_on"
+            android:title="Screen On Time"/>
+
     </group>
 
     <group  android:checkableBehavior="single">
