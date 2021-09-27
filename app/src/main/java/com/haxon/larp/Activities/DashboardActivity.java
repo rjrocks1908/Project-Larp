@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.haxon.larp.R;
+import com.haxon.larp.fragments.CO2CalcFragment;
 import com.haxon.larp.fragments.HomeFragment;
 import com.haxon.larp.fragments.RulesFragment;
 import com.haxon.larp.fragments.TaskFragment;
@@ -58,6 +59,12 @@ public class DashboardActivity extends AppCompatActivity {
                         break;
                     case R.id.character_menu:
                         Toast.makeText(DashboardActivity.this, "Avatar", Toast.LENGTH_SHORT).show();
+                        navigationView.setCheckedItem(R.id.character_menu);
+                        break;
+                    case R.id.calc_menu:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new CO2CalcFragment()).commit();
+                        navigationView.setCheckedItem(R.id.calc_menu);
                         break;
                     case R.id.logout_menu:
                         SharedPreferences preferences = getSharedPreferences("mypref", 0);

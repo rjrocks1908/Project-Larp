@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/login3">
+    android:background="@color/gradientEnd">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,32 +49,45 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_below="@id/r1"
+            android:id="@+id/r2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-
+            android:layout_below="@id/r1"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp">
+
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <Spinner
+                android:id="@+id/co2_appliances"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:layout_marginRight="20dp"
-                android:layout_gravity="center"/>
+                android:layout_weight="1"
+                />
 
             <EditText
+                android:id="@+id/co2_dailyUse"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/edittext"
+                android:padding="5dp" />
 
 
         </LinearLayout>
 
-
-
+        <Button
+            android:id="@+id/addAppliances"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/r2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/btnlogin"
+            android:text="Add"
+            android:textColor="@color/white" />
     </RelativeLayout>
-
 </LinearLayout>

@@ -1,10 +1,12 @@
 package com.haxon.larp.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,10 +14,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.haxon.larp.Activities.CreateNewTaskActivity;
+import com.haxon.larp.Models.MyGoalsModel;
 import com.haxon.larp.R;
 
 public class HomeFragment extends Fragment {
@@ -40,6 +45,8 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        loadTasks();
+
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,5 +57,55 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    public static class MyViewHolder extends
+    private void loadTasks() {
+
+        SharedPreferences prefs = requireContext().getSharedPreferences("mypref", 0);
+        String username = prefs.getString("username",null);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        reference = firebaseDatabase.getReference("Tasks").child(username);
+
+        FirebaseRecyclerOptions<MyGoalsModel> options = new FirebaseRecyclerOptions.Builder<MyGoalsModel>()
+                        .setQuery(reference, MyGoalsModel.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<MyGoalsModel, MyViewHolder> adapter = new FirebaseRecyclerAdapter<MyGoalsModel, MyViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i, @NonNull MyGoalsModel myGoalsModel) {
+
+                myViewHolder.taskDate.setText(myGoalsModel.getDates());
+                myViewHolder.taskTitle.setText(myGoalsModel.getGoal());
+                myViewHolder.taskDesc.setText(myGoalsModel.getGoalNotes());
+
+            }
+
+            @NonNull
+            @Override
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_task_layout, parent, false);
+                return new MyViewHolder(view);
+
+            }
+        };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+    }
+
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+
+        TextView taskDate, taskTitle, taskDesc;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            taskDate = itemView.findViewById(R.id.home_taskDate);
+            taskTitle = itemView.findViewById(R.id.home_taskTitle);
+            taskDesc = itemView.findViewById(R.id.home_taskDesc);
+
+        }
+    }
 }

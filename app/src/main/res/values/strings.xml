@@ -2,4 +2,28 @@
     <string name="app_name">Larp</string>
     <string name="navigation_open">Open Navigation drawer</string>
     <string name="navigation_close">Close Navigation drawer</string>
+
+    <string-array name="appliances_array">
+        <item>Choose Appliance:</item>
+        <item>Water Heater</item>
+        <item>Electric Furnace</item>
+        <item>Air Conditioner</item>
+        <item>Space Heater</item>
+        <item>TV 42 Plasma</item>
+        <item>TV 42 LED</item>
+        <item>Cable TV box on standby</item>
+        <item>5 x CFL lightbulbs (18 W)</item>
+        <item>Vaccuum cleaner</item>
+        <item>Hair Dryer</item>
+        <item>Fridge</item>
+        <item>Kettle</item>
+        <item>Oven</item>
+        <item>Toaster Oven</item>
+        <item>Cell phone 10 Wh battery</item>
+        <item>Desktop computer</item>
+        <item>Laptop 54 Wh battery</item>
+        <item>WiFi router</item>
+        <item>Game console PS4</item>
+        <item>Game console Xbox One</item>
+    </string-array>
 </resources>
