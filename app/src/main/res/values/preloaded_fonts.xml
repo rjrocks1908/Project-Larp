@@ -3,5 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/biryani_extralight</item>
         <item>@font/bree_serif</item>
+        <item>@font/original_surfer</item>
     </array>
 </resources>

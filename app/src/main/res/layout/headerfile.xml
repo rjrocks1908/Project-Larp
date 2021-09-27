@@ -18,7 +18,8 @@
         android:layout_height="wrap_content"
         android:text="Profile"
         android:textColor="#ffffff"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:fontFamily="@font/original_surfer"/>
 
 
 

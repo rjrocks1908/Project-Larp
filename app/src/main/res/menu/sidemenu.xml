@@ -43,29 +43,38 @@
 
     </group>
 
-    <group android:checkableBehavior="single">
+    <group  android:checkableBehavior="single">
 
         <item
-            android:id="@+id/settings_menu"
-            android:icon="@drawable/settings_vector"
-            android:title="Settings"/>
+            android:title="Miscellaneous">
 
-        <item
-            android:id="@+id/logout_menu"
-            android:icon="@drawable/logout_vector"
-            android:title="Logout"/>
+            <menu>
 
-        <item
-            android:id="@+id/share_menu"
-            android:icon="@drawable/share_vector"
-            android:title="Share"/>
+                <item
+                    android:id="@+id/settings_menu"
+                    android:icon="@drawable/settings_vector"
+                    android:title="Settings"/>
 
-        <item
-            android:id="@+id/contact_menu"
-            android:icon="@drawable/contact_vector"
-            android:title="Contact Us"/>
+                <item
+                    android:id="@+id/logout_menu"
+                    android:icon="@drawable/logout_vector"
+                    android:title="Logout"/>
+
+                <item
+                    android:id="@+id/share_menu"
+                    android:icon="@drawable/share_vector"
+                    android:title="Share"/>
+
+                <item
+                    android:id="@+id/contact_menu"
+                    android:icon="@drawable/contact_vector"
+                    android:title="Contact Us"/>
+
+
+            </menu>
+
+        </item>
 
     </group>
-
 
 </menu>
