@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Larp">
         <activity
+            android:name=".Activities.CreateNewTaskActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activities.IntroActivity"
             android:exported="true" />
         <activity
