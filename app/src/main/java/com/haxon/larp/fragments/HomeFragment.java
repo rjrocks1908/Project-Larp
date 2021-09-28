@@ -3,6 +3,7 @@ package com.haxon.larp.fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,20 +21,24 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.haxon.larp.Activities.CreateNewTaskActivity;
+import com.haxon.larp.Adapters.ThresholdAdapter;
 import com.haxon.larp.CONSTANTS;
 import com.haxon.larp.Models.MyGoalsModel;
 import com.haxon.larp.R;
+import com.haxon.larp.Utils;
 
 import java.util.Random;
 
 public class HomeFragment extends Fragment {
 
     FloatingActionButton addTask;
-    RecyclerView recyclerView;
+    RecyclerView recyclerView, workingList;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     TextView tip;
     Random myRandom;
+    private String[] appliances = new String[] {"waterHeater","elecFurnace","xbox","AC","spaceHeat","tvPlasma",
+            "tvLED","cable","cfl","vaccumm","hairdry","fridge","kettle","oven","toastoven", "cellPhone","pc","laptop","wifiRouter","ps4"};
 
     @Nullable
     @Override
@@ -43,6 +48,7 @@ public class HomeFragment extends Fragment {
 
         addTask = view.findViewById(R.id.home_addTask);
         recyclerView = view.findViewById(R.id.home_recyclerView);
+        workingList = view.findViewById(R.id.home_RVforTimer);
         tip = view.findViewById(R.id.home_tip);
 
         myRandom = new Random();
@@ -53,6 +59,12 @@ public class HomeFragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+
+        ThresholdAdapter adapter = new ThresholdAdapter(appliances, requireContext());
+        workingList.setLayoutManager(new LinearLayoutManager(requireContext()));
+        workingList.setAdapter(adapter);
+        Log.v("T", Utils.switches+"");
 
         loadTasks();
 

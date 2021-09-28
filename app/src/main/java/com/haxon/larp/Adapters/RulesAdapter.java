@@ -12,7 +12,7 @@ import com.haxon.larp.R;
 
 public class RulesAdapter extends RecyclerView.Adapter<RulesAdapter.RulesViewHolder>{
 
-    private String[] data;
+    private final String[] data;
 
     public RulesAdapter(String[] data) {
         this.data = data;

@@ -1,7 +1,10 @@
 package com.haxon.larp.fragments;
 
+import static com.haxon.larp.Utils.appli;
 import static com.haxon.larp.Utils.switches;
+import static com.haxon.larp.Utils.threshold;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +20,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +30,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.haxon.larp.Activities.DashboardActivity;
+import com.haxon.larp.Activities.ThresholdCounterActivity;
 import com.haxon.larp.R;
 import com.haxon.larp.Utils;
 
@@ -70,71 +77,129 @@ public class CO2CalcFragment extends Fragment {
         ps4 = view.findViewById(R.id.calc_ps4);
         next = view.findViewById(R.id.calc_next);
 
-        switches.clear();
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkingSwitches();
+                Fragment fragment = new HomeFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
-        if (waterHeater.isChecked()){
-            switches.put("waterHeater", "Water Heater");
-        }
-        if (elecFurnace.isChecked()) {
-            switches.put("elecFurnace", "Electric Furnace");
-        }
-        if (xbox.isChecked()){
-            switches.put("xbox", "XBOX");
-        }
-        if (AC.isChecked()){
-            switches.put("AC", "AC");
-        }
-        if (spaceHeat.isChecked()){
-            switches.put("spaceHeat", "Space Heat");
-        }
-        if (tvPlasma.isChecked()){
-            switches.put("tvPlasma", "Plasma TV");
-        }
-        if (tvLED.isChecked()){
-            switches.put("tvLED", "LED TV");
-        }
-        if (cable.isChecked()){
-            switches.put("cable", "Cable");
-        }
-        if (cfl.isChecked()){
-            switches.put("cfl", "CFL Light");
-        }
-        if (vaccumm.isChecked()){
-            switches.put("vaccumm", "Vacuum Cleaner");
-        }
-        if (hairdry.isChecked()){
-            switches.put("hairdry", "Hair Dryer");
-        }
-        if (fridge.isChecked()){
-            switches.put("fridge", "Fridge");
-        }
-        if (kettle.isChecked()){
-            switches.put("kettle", "Kettle");
-        }
-        if (oven.isChecked()){
-            switches.put("oven", "Oven");
-        }
-        if (toastoven.isChecked()){
-            switches.put("toastoven", "Toast Oven");
-        }
-        if (cellPhone.isChecked()){
-            switches.put("cellPhone", "Cell Phone");
-        }
-        if (pc.isChecked()){
-            switches.put("pc", "Desktop Computer");
-        }
-        if (laptop.isChecked()){
-            switches.put("laptop", "Laptop");
-        }
-        if (wifiRouter.isChecked()){
-            switches.put("wifiRouter", "WifiRouter");
-        }
-        if (ps4.isChecked()){
-            switches.put("ps4", "PS4");
-        }
+//        switches.clear();
+
+
 
         return view;
 
+    }
+
+    private void checkingSwitches() {
+
+        if (waterHeater.isChecked()){
+            switches.put("waterHeater", "Water Heater");
+            appli.add("waterHeater");
+            threshold.add(4438);
+        }
+        if (elecFurnace.isChecked()) {
+            switches.put("elecFurnace", "Electric Furnace");
+            appli.add("elecFurnace");
+            threshold.add(1805);
+        }
+        if (xbox.isChecked()){
+            switches.put("xbox", "XBOX");
+            appli.add("xbox");
+            threshold.add(1973);
+        }
+        if (AC.isChecked()){
+            switches.put("AC", "AC");
+            appli.add("AC");
+            threshold.add(1973);
+        }
+        if (spaceHeat.isChecked()){
+            switches.put("spaceHeat", "Space Heat");
+            appli.add("spaceHeat");
+            threshold.add(9863);
+        }
+        if (tvPlasma.isChecked()){
+            switches.put("tvPlasma", "Plasma TV");
+            appli.add("tvPlasma");
+            threshold.add(9863);
+        }
+        if (tvLED.isChecked()){
+            switches.put("tvLED", "LED TV");
+            appli.add("tvLED");
+            threshold.add(75945);
+        }
+        if (cable.isChecked()){
+            switches.put("cable", "Cable");
+            appli.add("cable");
+            threshold.add(16767);
+        }
+        if (cfl.isChecked()){
+            switches.put("cfl", "CFL Light");
+            appli.add("cfl");
+            threshold.add(197);
+        }
+        if (vaccumm.isChecked()){
+            switches.put("vaccumm", "Vacuum Cleaner");
+            appli.add("vaccumm");
+            threshold.add(769);
+        }
+        if (hairdry.isChecked()){
+            switches.put("hairdry", "Hair Dryer");
+            appli.add("hairdry");
+            threshold.add(562);
+        }
+        if (fridge.isChecked()){
+            switches.put("fridge", "Fridge");
+            appli.add("fridge");
+            threshold.add(14795);
+        }
+        if (kettle.isChecked()){
+            switches.put("kettle", "Kettle");
+            appli.add("kettle");
+            threshold.add(118);
+        }
+        if (oven.isChecked()){
+            switches.put("oven", "Oven");
+            appli.add("oven");
+            threshold.add(475);
+        }
+        if (toastoven.isChecked()){
+            switches.put("toastoven", "Toast Oven");
+            appli.add("toastoven");
+            threshold.add(720);
+        }
+        if (cellPhone.isChecked()){
+            switches.put("cellPhone", "Cell Phone");
+            appli.add("cellPhone");
+            threshold.add(592);
+        }
+        if (pc.isChecked()){
+            switches.put("pc", "Desktop Computer");
+            appli.add("pc");
+            threshold.add(3600);
+        }
+        if (laptop.isChecked()){
+            switches.put("laptop", "Laptop");
+            appli.add("laptop");
+            threshold.add(9863);
+        }
+        if (wifiRouter.isChecked()){
+            switches.put("wifiRouter", "WifiRouter");
+            appli.add("wifiRouter");
+            threshold.add(86400);
+        }
+        if (ps4.isChecked()){
+            switches.put("ps4", "PS4");
+            appli.add("ps4");
+            threshold.add(9863);
+        }
     }
 
     void calculateCO2(){
