@@ -7,8 +7,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Gravity;
@@ -17,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.haxon.larp.R;
+import com.haxon.larp.ReminderBroadCast;
 import com.haxon.larp.fragments.CO2CalcFragment;
 import com.haxon.larp.fragments.HomeFragment;
 import com.haxon.larp.fragments.RulesFragment;
@@ -37,6 +43,7 @@ public class DashboardActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.my_toolbar);
+        createNotificationChannel();
 
         setSupportActionBar(toolbar);
 
@@ -57,6 +64,7 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.task_menu:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new TaskFragment()).commit();
+                        reminderSet();
                         break;
                     case R.id.character_menu:
                         Toast.makeText(DashboardActivity.this, "Avatar", Toast.LENGTH_SHORT).show();
@@ -93,6 +101,40 @@ public class DashboardActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.home_menu);
+        }
+
+    }
+
+    private void reminderSet() {
+
+        Toast.makeText(DashboardActivity.this, "Set!", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(DashboardActivity.this, ReminderBroadCast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(DashboardActivity.this, 0, intent, 0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        long time = System.currentTimeMillis();
+
+        long tenSecondsInMilli = 1000 * 10;
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP,
+                time + tenSecondsInMilli,
+                pendingIntent);
+
+    }
+
+    private void createNotificationChannel(){
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "carbonReminderChannel";
+            String description = "Channel for Tips";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("tips", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
 
     }

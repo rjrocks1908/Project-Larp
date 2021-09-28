@@ -1,93 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/gradientEnd">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/coHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CO2 FootPrint Calculator"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:padding="20dp"
-            android:layout_marginTop="30dp"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/r1"
-            android:layout_below="@id/coHeading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Appliances"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:textSize="18sp"/>
+                android:text="Tell us \nwhich Appliance are you using"
+                android:textSize="20sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Daily use in Hrs"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:textSize="18sp"
-                android:gravity="center"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_waterHeater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Water Heater" />
 
-        <LinearLayout
-            android:id="@+id/r2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/r1"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_elecFurnace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Electric Furnace"
+                    android:layout_alignParentRight="true"/>
 
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            </RelativeLayout>
 
-            <Spinner
-                android:id="@+id/co2_appliances"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_xbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Game console Xbox One" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_AC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Air Conditioner"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_spaceHeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Space Heater" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_tvplasma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TV 42 Plasma"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_tvLED"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TV 42 LED" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_cable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cable TV box on standby"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_cfl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 x CFL lightbulbs (18 W)" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_vaccum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vaccuum cleaner"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_hairdry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hair Dryer" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_fridge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fridge"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_kettle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kettle" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_oven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oven"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_toasteroven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Toaster Oven" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_cellPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cell phone 10 Wh battery"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_pc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Desktop computer" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_laptop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Laptop 54 Wh battery"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_wifiRouter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WiFi router" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/calc_ps4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Game console PS4"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/calc_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                />
-
-            <EditText
-                android:id="@+id/co2_dailyUse"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/edittext"
-                android:padding="5dp" />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/info_btn"
+                android:text="Next"/>
 
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/addAppliances"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/r2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/btnlogin"
-            android:text="Add"
-            android:textColor="@color/white" />
-    </RelativeLayout>
-</LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
