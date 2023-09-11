@@ -1,5 +1,10 @@
 # Project-Larp
 A Live action role play game developed on android using Java and Firebase, as a part of the Xethon:Hackathon Competition. A gamified application specially designed for all the people to control the carbon footprint in an exciting manner.
+- You can choose appliances from the given list.
+- You can set timer and track once you start any appliance.
+- App will calculate daily carbon used and show on home screen.
+- App will show daily random tips to reduce carbon footprints.
+- Both dark and light themes are supported.
 
 ## Snippets
 <img src="https://github.com/rjrocks1908/Project-Larp/assets/33928238/655acca8-736b-42ec-b107-015f6f859894" width=200 height=400>
@@ -12,5 +17,3 @@ A Live action role play game developed on android using Java and Firebase, as a 
 <img src="https://github.com/rjrocks1908/Project-Larp/assets/33928238/f3b0d9a6-924d-46e6-9714-ff4003b71f66" width=200 height=400>
 <img src="https://github.com/rjrocks1908/Project-Larp/assets/33928238/54d99c0f-120e-4741-9928-1908a7abf403" width=200 height=400>
 <img src="https://github.com/rjrocks1908/Project-Larp/assets/33928238/a9f17035-9231-43fc-a2d7-93cddabdcbdb" width=200 height=400>
-
-
